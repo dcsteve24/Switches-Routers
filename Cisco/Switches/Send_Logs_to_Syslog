@@ -1,0 +1,7 @@
+1. Login
+2. Type "conf t" to enter the configuration terminal
+3. Type "service timestamps debug datetime msec" to enable detailed logging with timestamps
+4. Type "logging host <ip address>" to send logs to the ip address.
+    Note logs go over port UDP/514 and there is no way to change this from the switch side. I do have workarounds if the syslog is a RedhAt OS through firewalld port forwarding.
+5. Ensure you can ping the address so you know communications will reach: "ping <ip address>".
+6. Logs should start reaching after a brief period. Ensure you save your configurations with "copy run start"
