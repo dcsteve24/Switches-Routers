@@ -1,0 +1,4 @@
+1. Login
+2. Type "Conf t" to enter the configuration terminal
+3. Type "username <username> privilege <admin or user> secret <password>"
+4. Save the configuration with "copy run start"
