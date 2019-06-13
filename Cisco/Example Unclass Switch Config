@@ -1,0 +1,273 @@
+no service pad
+service tcp-keepalives-in
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service password-encryption
+!
+hostname SENVLANTAG
+!
+boot-start-marker
+boot-end-marker
+!
+logging userinfo
+logging buffered 1000000
+no logging console
+logging monitor informational
+enable secret 5 $1$u8M4$ZwuUvMM6qvkRMn22Wo/TP/
+!
+username viper privilege 15 secret 5 $1$1H0B$ZWOnQ1vStAl08YIVx6z6w.
+username scraig02 privilege 15 secret 5 $1$c9mG$ZIDYTYCz10RfC5VQ4Ce9X.
+aaa new-model
+!
+!
+aaa authentication login default local
+aaa authorization console
+aaa authorization exec default local
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone MST -7 0
+clock summer-time MDT recurring
+system mtu routing 1500
+!
+!
+!
+!
+no ip source-route
+no ip gratuitous-arps
+no ip cef optimize neighbor resolution
+!
+!
+no ip domain-lookup
+login on-failure log
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree loopguard default
+spanning-tree extend system-id
+!
+!
+!
+!
+vlan internal allocation policy ascending
+no cdp run
+!
+ip tcp synwait-time 10
+ip telnet source-interface Loopback0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ no ip address
+!
+interface GigabitEthernet0/1
+ description Commercial Line
+ switchport access vlan 648
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ no cdp enable
+!
+interface GigabitEthernet0/2
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface GigabitEthernet0/3
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface GigabitEthernet0/4
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface GigabitEthernet0/5
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface GigabitEthernet0/6
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface GigabitEthernet0/7
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface GigabitEthernet0/8
+ description Connection to TACLANE
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ no cdp enable
+!
+interface GigabitEthernet0/9
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface GigabitEthernet0/10
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface GigabitEthernet0/11
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface GigabitEthernet0/12
+ description Unused Port
+ switchport access vlan 99
+ switchport mode access
+ switchport block unicast
+ switchport block multicast
+ switchport port-security
+ shutdown
+ no cdp enable
+ ip verify source
+!
+interface Vlan1
+ no ip address
+ no ip redirects
+ no ip route-cache
+ shutdown
+!
+interface Vlan99
+ description Unused Ports
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan648
+ description AT&T Required VLAN
+ no ip address
+ no ip redirects
+ no ip route-cache
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+no ip route static inter-vrf
+!
+!
+!
+!
+!
+no vstack
+privilege exec level 2 show version
+privilege exec level 2 show running-config
+privilege exec level 1 show configuration
+privilege exec level 2 show logging
+privilege exec level 2 show
+banner login ^C
+You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS
+(which includes any device attached to this IS), you consent to the following conditions:
+
+-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration
+testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and
+counterintelligence (CI) investigations.
+-At any time, the USG may inspect and seize data stored on this IS.
+-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and
+may be disclosed or used for any USG-authorized purpose.
+-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit
+or privacy.
+-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the
+content of privileged communications, or work product, related to personal representation or services by attorneys,
+psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User
+Agreement for details.
+^C
+!
+line con 0
+ exec-timeout 9 0
+ logging synchronous
+line vty 0 4
+ exec-timeout 9 0
+ no exec
+line vty 5 15
+ exec-timeout 9 0
+ no exec
+!
+!
+end
