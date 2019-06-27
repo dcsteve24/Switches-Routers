@@ -13,10 +13,10 @@ logging userinfo
 logging buffered 1000000
 no logging console
 logging monitor informational
-enable secret 5 $1$u8M4$ZwuUvMM6qvkRMn22Wo/TP/
+enable secret 
 !
-username viper privilege 15 secret 5 $1$1H0B$ZWOnQ1vStAl08YIVx6z6w.
-username scraig02 privilege 15 secret 5 $1$c9mG$ZIDYTYCz10RfC5VQ4Ce9X.
+username viper privilege 15 secret 
+username scraig02 privilege 15 secret 
 aaa new-model
 !
 !
