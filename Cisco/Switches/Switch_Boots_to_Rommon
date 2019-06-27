@@ -1,0 +1,9 @@
+#CatalystIOS
+
+When a switch boots to rommon it didnt pick up a bootable device. This is common after a factory reset.
+
+Do the following to see if it can see a bootflash:
+1. dir bootflash:
+  You will see a file name (hopefully). If not you need to install a new boot flash or hardware is corrupt.
+2. If you say the file, type: boot bootflash:<filename>
+3. It should start registering the IOS and eventually come back as expected.
